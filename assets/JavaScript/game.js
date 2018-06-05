@@ -11,20 +11,20 @@ var guessesLeft = 9;
 
 // User picks a letter
 document.onkeyup = function (event) {
-    guessLetters = event.key;
+    var userPick = event.key;
     // Computer picks a letter
     var compPick = letters[Math.floor(Math.random() * letters.length)];
     // If statements determine what happens next
-    if (guessLetters === compPick) {
+    if (userPick === compPick) {
         ++wins;
         guessesLeft = 9;
-        guessLetter = [];
+        guessLetters = [];
         document.querySelector('#win').innerHTML = "Wins: " + wins;
     }
-    else if (guessLetters !== compPick) {
+    else if (userPick !== compPick) {
         --guessesLeft;
-        guessLetters.push(guessLetters);
-        document.querySelector('#guessLetters').innerHTML = "You've tried " + guessLetters;
+        guessLetters.push(userPick);
+        document.querySelector('#userPick').innerHTML = "You've tried " + guessLetters;
         document.querySelector('#guessesLeft').innerHTML = "Guesses Left: " + guessesLeft;
     }
     if (guessesLeft === 0) {
